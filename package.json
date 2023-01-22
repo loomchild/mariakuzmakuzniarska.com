@@ -1,0 +1,28 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:clean": "rm -rf dist && mkdir dist",
+    "build:css": "postcss style.css -o dist/style.css",
+    "build:static": "cp -r static dist",
+    "build:font": "cp -r font dist",
+    "build:html": "sed 's/dist\\///' index.html > dist/index.html",
+    "build": "npm run build:clean && npm run build:css && npm run build:static && npm run build:font && npm run build:html",
+    "dist": "NODE_ENV=production npm run build",
+    "dev": "watch 'npm run build:css' ./ -p /dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^9.8.2",
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.6",
+    "watch": "^1.0.2"
+  }
+}
